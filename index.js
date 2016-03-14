@@ -4,7 +4,7 @@ var app = express()
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(requres, response) {
-response.sendfile(__dirname + '/index.html')
+response.readFileSync(__dirname + '/index.html')
 })
 
 var port = process.env.PORT || 8080
