@@ -1,11 +1,19 @@
-var fs = require('fs')
-var http = require('http')
+var fs = require('fs');
+var http = require('http');
 
-var port = process.env.PORT || 8080
+var port = process.env.PORT || 8080;
 
 var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	var buff = new Buffer(1024);	
+	
+	var sizeFile = fs.stat(__dirname + '/index.html', function (err, stats) {
+		if(err) {
+			return console.log(err);
+		}
+		return stats.size;
+	});
+	
+	var buff = new Buffer(sizeFile);
 
 	fs.open(__dirname + '/index.html', 'r',  function (err, fd) {
          	if (err) {
@@ -23,7 +31,7 @@ var requestListener = function (req, res) {
 	
         res.end();
 	});
-}
+};
 var server = http.createServer(requestListener);
 server.listen(port);
 
