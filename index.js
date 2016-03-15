@@ -1,7 +1,6 @@
 var fs = require('fs')
 var http = require('http')
 
-
 fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
 	if (err) {
 		return console.log(err);
@@ -11,11 +10,18 @@ fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
 
 var port = process.env.PORT || 8080
 
-var requrestListener = function (req, res) {
+var requestListener = function (req, res) {
 	res.writeHead(200);
-	res.end('Hola\n');
+	fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
+        if (err) {
+                return console.log(err);
+        }
+        console.log(data);
+});
+
+	res.end();
 }
 
-var server = http.createServer(requrestListener);
+var server = http.createServer(requestListener);
 server.listen(port);
 
