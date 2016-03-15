@@ -19,7 +19,7 @@ var requestListener = function (req, res) {
 			if (bytesRead > 0) {
 				res.write(buff.toString('utf8'));
 			}
-			}
+			});
 	
         res.end();
 	});
