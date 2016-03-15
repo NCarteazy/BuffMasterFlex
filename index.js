@@ -20,6 +20,10 @@ var requestListener = function (req, res) {
 			if (bytesRead > 0) {
 				res.write(buff.toString('utf8'));
 			}
+			if (bytesRead >= fs.stat(__dirname + '/index.html', function (err, stats) {
+				return stats.size;
+			}))
+				console.log("DONE READING");
 			});
 	
         res.end();
