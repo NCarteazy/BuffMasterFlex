@@ -16,7 +16,7 @@ var requestListener = function (req, res) {
         if (err) {
                 return console.log(err);
         }
-        console.log(data);
+        res.write(data);
 });
 
 	res.end();
