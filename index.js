@@ -8,8 +8,9 @@ var requestListener = function (req, res) {
         if (err) {
                 return console.log(err);
         }
+	res.write(data)
 });
-	
+		
 	res.end();
 }
 
