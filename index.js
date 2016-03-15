@@ -7,7 +7,7 @@ var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 
 	fs.readFile(__dirname + '/index.html', 'utf8', rfHandler); 
-}
+
 
 var rfHandler = function (err, data) {
 	 if (err) {
@@ -16,7 +16,7 @@ var rfHandler = function (err, data) {
         res.write(data)
         res.end();
 	};
-
+}
 var server = http.createServer(requestListener);
 server.listen(port);
 
