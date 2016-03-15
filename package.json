@@ -1,29 +1,31 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "BuffMasterFlex",
+  "version": "1.0.0",
+  "description": "Basic kickstarter-like website",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {
-    "express": "^4.13.3"
-  },
-  "engines": {
-    "node": "4.0.0"
+    "test": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-sample"
+    "url": "https://github.com/NCarteazy/BuffMasterFlex"
   },
   "keywords": [
-    "node",
     "heroku",
-    "express"
+    "express",
+    "fs",
+    "node.js"
   ],
-  "author": "Mark Pundsack",
-  "contributors": [
-    "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)"
-  ],
-  "license": "MIT"
+  "author": "Nick C",
+  "license": "SJSU",
+  "bugs": {
+    "url": "https://github.com/NCarteazy/BuffMasterFlex/issues"
+  },
+  "homepage": "https://github.com/NCarteazy/BuffMasterFlex",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "engines":{
+   "node": "5.8.0"
+  }
 }

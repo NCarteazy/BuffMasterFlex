@@ -1,16 +1,21 @@
-var express = require('express')
-var app = express()
+var fs = require('fs')
+var http = require('http')
 
-app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(requres, response) {
-response.sendfile(__dirname + '/index.html')
-})
+fs.readFile(__dirname + '/index.html', 'utf8', function (err, data) {
+	if (err) {
+		return console.log(err);
+	}
+	console.log(data);
+});
 
 var port = process.env.PORT || 8080
 
-app.listen(port, function() {
-        console.log("Node app is running at:" + port)
-})
+var requrestListener = function (req, res) {
+	res.writeHead(200);
+	res.end('Hola\n');
+}
 
+var server = http.createServer(requrestListener);
+server.listen(port);
 
