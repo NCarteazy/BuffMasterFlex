@@ -6,14 +6,7 @@ var port = process.env.PORT || 8080;
 var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	
-	var sizeFile = fs.stat(__dirname + '/index.html', function (err, stats) {
-		if(err) {
-			return console.log(err);
-		}
-		return stats.size;
-	});
-	
-	var buff = new Buffer(sizeFile);
+	var buff = new Buffer(4096);
 
 	fs.open(__dirname + '/index.html', 'r',  function (err, fd) {
          	if (err) {
