@@ -13,10 +13,10 @@ var requestListener = function (req, res) {
 			if (err) {
 				return console.log(err);
 			}
-			var bsize = stats.size,
-			csize = 512;
-			buffer = new Buffer(bSize),
-			bread = 0;
+			var bsize = stats.size;
+			var csize = 512;
+			var buffer = new Buffer(bSize);
+			var bread = 0;
 			
 			while ( bread < bsize ) {
 				if ((bread + csize) > bsize) {
@@ -29,7 +29,7 @@ var requestListener = function (req, res) {
 		res.write(buffer.toString('utf8', 0, bsize));
 		res.end();
 		fs.close(fd);	
-		}
+		
 		}); 
 	});
 };
