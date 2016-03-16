@@ -25,7 +25,7 @@ var requestListener = function (req, res) {
 		 	if (err) {
 				return console.log(err);
 			}
-			console.log(buff.toString('utf8'));
+			console.log(buffer.toString('utf8'));
 			local = local + 512;
 		});}
 		else {
@@ -34,7 +34,7 @@ var requestListener = function (req, res) {
 			if (err) {
 				return console.log(err);
 			}
-			res.write(buff);
+			res.write(buffer);
 		 
 		});
 		}
