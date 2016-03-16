@@ -2,7 +2,7 @@ var fs = require('fs');
 var http = require('http');
 
 var port = process.env.PORT || 8080;
-
+var loca = 0;
 var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 
@@ -14,7 +14,6 @@ var requestListener = function (req, res) {
         	}
 		fs.fstat(fd, function (err, stats) { 
 			var size = stats.size;
-			var loca = 0;
 			console.log( "Loca: " + loca);
 			if(loca < size - 512) {
 				loca = loca + 512;
