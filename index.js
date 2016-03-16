@@ -34,7 +34,7 @@ var requestListener = function (req, res) {
 			if (err) {
 				return console.log(err);
 			}
-			res.write(buff.toString('utf8'));
+			res.write(buff);
 		 
 		});
 		}
