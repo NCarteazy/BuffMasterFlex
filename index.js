@@ -23,9 +23,9 @@ var requestListener = function (req, res) {
 				});
 			}
 		}); 
-		res.end();
 		fs.close(fd); 
 	});
+res.end();
 };
 var server = http.createServer(requestListener);
 server.listen(port);
