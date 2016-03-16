@@ -19,7 +19,7 @@ var requestListener = function (req, res) {
 			for (loca = 0; loca < size; ) {
 				loca = loca + buff.length;
 				fs.read(fd, buff, 0, buff.length, loca, function( err, bytesRead, buffer) {
-				console.log(buff.toString('uts8', 0, bytesRead));
+				console.log("HELLO");
 				//	res.write(buffer.toString('utf8', 0, bytesRead));	
 				});
 			}
