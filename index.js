@@ -22,6 +22,7 @@ var requestListener = function (req, res) {
 		 	if (err) {
 				return console.log(err);
 			}
+			console.log("LOCAL VALUE IS: " + local);
 			local = local + 512;
 		});}
 		else {
