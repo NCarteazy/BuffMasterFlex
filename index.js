@@ -16,11 +16,10 @@ var requestListener = function (req, res) {
 			var size = stats.size;
 			var loca = 0;
 			console.log( "Size of file: " + size);
-			for (loca = 0; loca < size; ) {
-				loca = loca + 512;
-				console.log(loca);
+			for (loca = 0; loca < size-512; loca = loca + 512) {
+				console.log(loca + "" + buff.length);
 				fs.read(fd, buff, 0, buff.length, loca, function( err, bytesRead, buffer) {
-				console.log("LOCA: " + loca) ;
+				console.log("LOCA: " + loca + "BR: " + bytesRead) ;
 				//	res.write(buffer.toString('utf8', 0, bytesRead));	
 				});
 			}
