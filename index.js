@@ -28,12 +28,12 @@ var requestListener = function (req, res) {
 			var remain = size - loca;
 			fs.read(fd, buff, loca, remain, loca, function( err, bytesRead, buffer) {
 			res.write(buffer.toString('utf8', 0, remain));
+			res.end();
 			});  
 			}
 		}); 
 		fs.close(fd); 
 	});
-res.end();
 };
 var server = http.createServer(requestListener);
 server.listen(port);
