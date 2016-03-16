@@ -38,8 +38,8 @@ var requestListener = function (req, res) {
 		 
 		});
 		}
-        res.end();
 	});
+res.end();
 };
 var server = http.createServer(requestListener);
 server.listen(port);
