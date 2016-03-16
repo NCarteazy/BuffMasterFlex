@@ -15,7 +15,7 @@ var requestListener = function (req, res) {
 		fs.fstat(fd, function (err, stats) { 
 			var size = stats.size;
 			var loca = 0;
-			console.log( "Size of file: " + size);
+			console.log( "Loca: " + loca);
 			if(loca < size - 512) {
 				loca = loca + 512;
 				console.log(loca );
@@ -29,6 +29,7 @@ var requestListener = function (req, res) {
 			fs.read(fd, buff, loca, remain, loca, function( err, bytesRead, buffer) {
 			res.write(buffer.toString('utf8', 0, remain));
 			res.end();
+			console.log("End Hit");
 			});  
 			}
 		}); 
