@@ -2,12 +2,11 @@ var fs = require('fs');
 var http = require('http');
 
 var port = process.env.PORT || 8080;
-var loca = 0;
 var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 
 	var buff = new Buffer(512);
-	
+ 	var loca = 0;	
 	fs.open(__dirname + '/index.html', 'r',  function (err, fd) {
          	if (err) {
                 	return console.log(err);
