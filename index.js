@@ -5,27 +5,35 @@ var port = process.env.PORT || 8080;
 
 var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	
-	var buff = new Buffer(4096);
 
+	var size = fs.stat(__dirname + '/index.html', function (err, stats) {
+		return stats.size;
+	});
+	var local = 0;
+	
+	var buff = new Buffer(512);
+	
 	fs.open(__dirname + '/index.html', 'r',  function (err, fd) {
          	if (err) {
                 	return console.log(err);
         	}
-        
-		fs.read(fd, buff, 0, buff.length, null, function (err, bytesRead, buffer) {
+        	if (local <= size - 512) {
+		fs.read(fd, buff, local, 512, local, function (err, bytesRead, buffer) {
 		 	if (err) {
 				return console.log(err);
 			}
-			if (bytesRead > 0) {
-				res.write(buff.toString('utf8'));
+			local = local + 512;
+		});}
+		else {
+		var diff = size - local;
+		fs.read(fd, buff, local, diff, local, function (err, bytesRead, buffer) {
+			if (err) {
+				return console.log(err);
 			}
-			if (bytesRead >= fs.stat(__dirname + '/index.html', function (err, stats) {
-				return stats.size;
-			}))
-				console.log("DONE READING");
-			});
-	
+			res.write(buff.toString('utf8'));
+		 
+		});
+		}
         res.end();
 	});
 };
