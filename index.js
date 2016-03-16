@@ -15,7 +15,7 @@ var requestListener = function (req, res) {
 			}
 			var bsize = stats.size;
 			var csize = 512;
-			var buffer = new Buffer(bSize);
+			var buffer = new Buffer(bsize);
 			var bread = 0;
 			
 			while ( bread < bsize ) {
