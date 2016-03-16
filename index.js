@@ -19,15 +19,15 @@ var requestListener = function (req, res) {
 			if(loca < size - 512) {
 				loca = loca + 512;
 				console.log(loca );
-				fs.read(fd, buff, loca, 512, loca, function( err, bytesRead, buffer) {
+				fs.read(fd, buff, 0, 512, loca, function( err, bytesRead, buffer) {
 					console.log("Spot reading into buffer: " + loca);
-					//res.write(buffer.toString('utf8', 0, bytesRead));	
+					res.write(buffer.toString('utf8', 0, 512));	
 				});
 			}
 			else {
 			var remain = size - loca;
 			fs.read(fd, buff, loca, remain, loca, function( err, bytesRead, buffer) {
-			res.write(buffer.toString('utf8', 0, size));
+			res.write(buffer.toString('utf8', 0, remain));
 			});  
 			}
 		}); 
