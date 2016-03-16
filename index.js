@@ -25,7 +25,6 @@ var requestListener = function (req, res) {
 			fs.read(fd, buffer, bread, csize, bread);
 			bread = bread + csize;
 			}
-		console.log(buffer.toString('utf8', 0, bsize));
 		res.write(buffer.toString('utf8', 0, bsize));
 		res.end();
 		fs.close(fd);	
