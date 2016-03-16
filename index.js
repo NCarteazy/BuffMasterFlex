@@ -17,7 +17,8 @@ var requestListener = function (req, res) {
 			var loca = 0;
 			console.log( "Size of file: " + size);
 			for (loca = 0; loca < size; ) {
-				loca = loca + buff.length;
+				loca = loca + 512;
+				console.log(loca);
 				fs.read(fd, buff, 0, buff.length, loca, function( err, bytesRead, buffer) {
 				console.log("LOCA: " + loca) ;
 				//	res.write(buffer.toString('utf8', 0, bytesRead));	
