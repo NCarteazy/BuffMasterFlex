@@ -18,7 +18,7 @@ var requestListener = function (req, res) {
 				loca = loca + 512;
 				console.log(loca );
 				fs.read(fd, buff, 0, 512, loca, function( err, bytesRead, buffer) {
-					console.log("Spot reading into buffer: " + loca);
+					console.log("Bytesread: " + bytesRead);
 					res.write(buffer.toString('utf8', 0, 512));	
 				});
 			}
