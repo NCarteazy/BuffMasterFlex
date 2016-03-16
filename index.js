@@ -7,6 +7,9 @@ var requestListener = function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 
 	var size = fs.stat(__dirname + '/index.html', function (err, stats) {
+		if (err) {
+			console.log(err);
+		}
 		return stats.size;
 	});
 	var local = 0;
@@ -22,7 +25,7 @@ var requestListener = function (req, res) {
 		 	if (err) {
 				return console.log(err);
 			}
-			console.log("LOCAL VALUE IS: " + local);
+			console.log(buff.toString('utf8'));
 			local = local + 512;
 		});}
 		else {
